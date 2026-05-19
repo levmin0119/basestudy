@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * 自己实现一个ArrayList
  */
-public class MyArrayList {
+public class MyArrayList<T> {
 
     //数组，真正保存元素的位置
     private Object[] elementData;
@@ -27,7 +27,7 @@ public class MyArrayList {
     }
 
     //开始新增元素，这里只是在末尾新增元素
-    public void addElement(Object obj) {
+    public void addElement(T obj) {
         if (elementSize>=elementData.length){
             grow();
         }
@@ -35,8 +35,9 @@ public class MyArrayList {
         elementSize++;
     }
 
-    public Object getElement(int index) {
-        return elementData[index];
+    @SuppressWarnings("ubchecked")
+    public T getElement(int index) {
+        return (T) elementData[index];
     }
 
     public void deleteElement(int index) {
@@ -65,10 +66,10 @@ public class MyArrayList {
     }
 
     public static void main(String[] args) {
-        MyArrayList myArrayList = new MyArrayList();
-        myArrayList.addElement(1);
-        myArrayList.addElement(2);
-        myArrayList.addElement(3);
+        MyArrayList<String> myArrayList = new MyArrayList<String>();
+        myArrayList.addElement("zhanyue");
+        myArrayList.addElement("zhanyue");
+        myArrayList.addElement("zhanyue");
         System.out.println("当前集合的大小：" + myArrayList.getElementSize());
         System.out.println("当前元素值：" + myArrayList.getElement(1));
         myArrayList.deleteElement(1);

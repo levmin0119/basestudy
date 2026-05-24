@@ -21,6 +21,8 @@ public class FileInputStreamDemo {
         in.close();
         charsetFile("aaa.txt");
         fileInputStream001("aaa.txt");
+        fileReaderDemo("aaa.txt","bb.txt");
+
     }
 
     public static void charsetFile(String filePath) throws IOException {
@@ -72,6 +74,38 @@ public class FileInputStreamDemo {
                 }
                 if (fis!=null){
                     fis.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void fileReaderDemo(String filePath,String textPath){
+        FileReader fileReader = null;
+        FileWriter fileWriter = null;
+        try {
+            fileReader = new FileReader(filePath);
+            fileWriter  = new FileWriter(textPath);
+            int data;
+            //这里读取的时候必须得这样写
+            while ((data=fileReader.read())!= -1){
+                System.out.println("文本内容："+(char) data);
+                fileWriter.write(data);
+
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+
+                if (fileReader != null){
+                    fileReader.close();
+                }
+                if (fileWriter != null){
+                    //写入的东西还在缓冲区中，所以需要将缓冲区中的信息刷出去
+                    fileWriter.flush();
+                    fileReader.close();
+
                 }
             }catch (IOException e){
                 e.printStackTrace();

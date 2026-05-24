@@ -1,6 +1,5 @@
 package com.zhangyue.study.base.collectiondemo;
 
-import com.zhangyue.study.base.StudentDemo;
 
 public class Student {
     private String name;

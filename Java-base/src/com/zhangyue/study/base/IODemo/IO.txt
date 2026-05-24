@@ -1,0 +1,16 @@
+io的使用场景
+读取文件
+写文件
+数据库查询
+网络查询
+下载视频
+redis通信
+kafka消息发送
+这些本质都是IO
+
+重要的是有一个NIO
+
+字节流属于原始的二进制数据
+核心 InputStream ,OutputStream
+字符流
+核心 Reader,Writer

@@ -32,6 +32,11 @@ public class MyStringBuilder {
             count ++;
         }
     }
+
+    /**
+     * 扩容的大小应该是原数组的大小的两倍，而不是默认数组大小的两倍
+     * @param minCapacity
+     */
     private void grow(int minCapacity){
         //新的数组的容量设置为原来的两倍
         int newSize = value.length  * 2;
